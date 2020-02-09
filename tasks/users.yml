@@ -1,0 +1,5 @@
+- name: Install zsh
+  pacman: name=zsh state=present
+
+- name: Create {{ user }}
+  user: name={{ user }} shell=/bin/zsh password={{ user_password }}

@@ -1,0 +1,25 @@
+- hosts: localhost
+  become: true
+  connection: local
+
+  vars_prompt:
+    - name: config_name
+      prompt: config file
+      private: no
+    - name: user_password
+      prompt: user password
+      private: yes
+      encrypt: sha512_crypt
+      confirm: yes
+
+  vars_files:
+    - vars/{{ config_name }}.yml
+
+  tasks:
+    - include: tasks/pacman.yml
+    - include: tasks/users.yml
+    - include: tasks/aur.yml
+    - include: tasks/docker.yml
+    - include: tasks/xorg.yml
+    - include: tasks/desktop.yml
+    - include: tasks/dotfiles.yml

@@ -1,0 +1,13 @@
+- name: Install docker tools
+  pacman:
+    name:
+      - docker
+      - docker-compose
+      - kubectl
+      - kubectx
+
+- name: Create docker group
+  group: name=docker state=present
+
+- name: Add {{ user }} to docker group
+  user: name={{ user }} groups=docker append=yes

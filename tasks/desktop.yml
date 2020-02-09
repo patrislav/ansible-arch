@@ -1,0 +1,14 @@
+- name: Install desktop environment
+  pacman:
+    name:
+      - i3-gaps
+      - dex
+      - dunst
+      - rofi
+
+- name: Install desktop environment (AUR)
+  become: yes
+  become_user: aur_builder
+  aur:
+    name:
+      - polybar
