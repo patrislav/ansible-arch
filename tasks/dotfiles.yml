@@ -3,5 +3,12 @@
   become_user: "{{ user }}"
   git:
     repo: git://github.com/patrislav/dotfiles.git
-    dest: /home/{{ user }}/.dotfiles
+    dest: /home/{{ user }}/dotfiles
     update: no
+
+- name: Install dotfiles for {{ user }}
+  become: yes
+  become_user: "{{ user }}"
+  command:
+    cmd: ./install
+    chdir: /home/{{ user }}/dotfiles
