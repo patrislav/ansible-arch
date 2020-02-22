@@ -1,5 +1,5 @@
-- name: Install zsh
-  pacman: name=zsh state=present
+- name: Install fish
+  pacman: name=fish state=present
 
 - name: Create {{ user }}
-  user: name={{ user }} shell=/bin/zsh password={{ user_password }}
+  user: name={{ user }} shell=/usr/bin/fish password={{ user_password }}
